@@ -60,7 +60,6 @@ body * {
 #switch {
   position: relative;
   width: 64px;
-
   margin: 0 auto;
   padding: 4px auto;
 }
@@ -78,11 +77,16 @@ body * {
   top: 50%;
   transform: translateY(-50%);
   z-index: 1;
+
+  animation: deslizo-dvolta 0.3s;
+}
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  /*forwards serve para manter o fim da animação no 'to'*/
+  animation: deslizo 0.3s forwards;
 }
 
 #switch span {
@@ -160,5 +164,24 @@ footer {
 
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/*Animação*/
+@keyframes deslizo {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes deslizo-dvolta {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
